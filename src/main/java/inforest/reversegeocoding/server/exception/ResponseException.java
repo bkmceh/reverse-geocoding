@@ -1,4 +1,4 @@
-package com.example.reversegeocoding.server.exception;
+package inforest.reversegeocoding.server.exception;
 
 public class ResponseException {
 

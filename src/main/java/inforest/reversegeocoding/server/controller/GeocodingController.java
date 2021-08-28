@@ -1,9 +1,9 @@
-package com.example.reversegeocoding.server.controller;
+package inforest.reversegeocoding.server.controller;
 
+import inforest.reversegeocoding.server.service.GeocodingService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import com.example.reversegeocoding.server.service.GeocodingService;
 
 @RestController
 @RequestMapping("/api/address")

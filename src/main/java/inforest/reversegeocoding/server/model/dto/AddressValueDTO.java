@@ -1,4 +1,4 @@
-package com.example.reversegeocoding.server.model.dto;
+package inforest.reversegeocoding.server.model.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 

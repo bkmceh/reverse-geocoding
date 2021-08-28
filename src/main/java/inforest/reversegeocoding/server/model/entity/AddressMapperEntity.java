@@ -1,4 +1,4 @@
-package com.example.reversegeocoding.server.model.entity;
+package inforest.reversegeocoding.server.model.entity;
 
 import javax.persistence.*;
 

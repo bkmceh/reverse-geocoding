@@ -1,4 +1,4 @@
-package com.example.reversegeocoding.client;
+package inforest.reversegeocoding.client;
 
 import java.io.IOException;
 import org.apache.http.HttpStatus;
@@ -18,7 +18,7 @@ public class Main {
     private final static double LON = 48.734;
     public static void main(String[] args) {
         try(CloseableHttpClient client = HttpClients.createDefault()) {
-            CloseableHttpResponse response = client.execute(createRequest(LAT, LON));
+            CloseableHttpResponse response = client.execute(createRequest());
             final int statusCode = response.getStatusLine().getStatusCode();
             if (HttpStatus.SC_OK != statusCode) {
                 throw new ParseException("Unable to get response");
@@ -30,7 +30,7 @@ public class Main {
         }
     }
 
-    private static HttpUriRequest createRequest(final double lat, final double lon) {
-        return new HttpGet(url + String.format("lat=%s&lon=%s", lat, lon));
+    private static HttpUriRequest createRequest() {
+        return new HttpGet(url + String.format("lat=%s&lon=%s", LAT, LON));
     }
 }

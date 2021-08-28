@@ -1,4 +1,4 @@
-package com.example.reversegeocoding.server.service;
+package inforest.reversegeocoding.server.service;
 
 import java.io.IOException;
 
@@ -13,10 +13,10 @@ import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.springframework.beans.factory.annotation.Autowired;
-import com.example.reversegeocoding.server.repository.IGeocodingRepository;
-import com.example.reversegeocoding.server.model.entity.AddressMapperEntity;
-import com.example.reversegeocoding.server.model.dto.SuggestionsListResponse;
-import com.example.reversegeocoding.server.exception.AddressNotFoundException;
+import inforest.reversegeocoding.server.repository.IGeocodingRepository;
+import inforest.reversegeocoding.server.model.entity.AddressMapperEntity;
+import inforest.reversegeocoding.server.model.dto.SuggestionsListResponse;
+import inforest.reversegeocoding.server.exception.AddressNotFoundException;
 
 
 @Service

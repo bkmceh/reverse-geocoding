@@ -1,4 +1,4 @@
-package com.example.reversegeocoding.server.exception;
+package inforest.reversegeocoding.server.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
