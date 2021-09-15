@@ -1,46 +1,46 @@
 # reverse-geocoding
 
 ## 💾 Information 
-Данная программа получает координаты точки, и, если её нет в базе данных, добавляет её туда.
+This program receives the coordinates of a point, and if it is not in the database, adds it there.
 
-Запрос адреса осуществляется через взаимодействие с _DaData API_ 
+The address is requested through interaction with the _DaData API_
 
-При повторном запросе данной точки, программа берёт адрес из базы данных.
+When re-requesting this point, the program takes the address from the database.
 
-Получается некое кеширование данных.
+It turns out some kind of data caching.
 
-Программа имитирует работу клиента, а также ответ от сервера.
+The program simulates the work of the client, as well as the response from the server.
 
-Имитация клиента расположена в `inforest/reversegeocoding/client`
+The simulated client is located in `inforest/reversegeocoding/client`
 
-Код сервера расположен в `inforest/reversegeocoding/server`
+The server code is located in `inforest/reversegeocoding/server`
 
-### ❓ Что делает клиент?
-Клиент посылает гет-запрос с координатами точки _latitude_ и _longitude_ на адрес:
+### ❓ What does the client do?
+The client sends a get request with the coordinates of the point **_latitude_** and **_longitude_** to the address:
 ```
 http://localhost:8080/api/address/get?lat=54.741646&lon=48.734
 ```
-Для измены координат точки, достаточно изменить значения переменных в классе _client/Main.java_:
+To change the coordinates of a point, it is enough to change the values of the variables in the `client/Main.java` class:
 ``` java
 private final static double LAT = 54.741646;
 private final static double LON = 48.734;
 ```
 
-### ❓ Что делает сервер?
-Сервер получает гет-запрос от нашего клиента и сперва проверяет наличие данной точки в базе данных.
+### ❓ What does the server do?
+The server receives a get request from our client and first checks the existence of this point in the database.
 
-- Если находит, то возвращает:
+- If it finds it, it returns:
     ```
     LAT: 54.741646, LON: 48.734
     Address: Found from Database: Респ Татарстан, Тетюшский р-н, поселок Пищемар, ул Пищемар
     ```
-- Если же в базе данных нет данной точки, сервер делает гет-запрос на DaData API, сохраняет данные в БД и возвращает:
+- If there is no given point in the database, the server makes a get request to the DaData API, saves the data into the database and returns:
     ```
     LAT: 54.741646, LON: 48.734
     Address: Not found from Database, saved: Респ Татарстан, Тетюшский р-н, поселок Пищемар, ул Пищемар
     ```
 
 ## 📝 How to run
-Просто склонируйте репозиторий к себе
-- Запустите `ReversegeocodingApplication.java`
-- Запустите `client/Main.java`
+Just clone the repository to yourself
+- Run `ReversegeocodingApplication.java`
+- Run `client/Main.java`
