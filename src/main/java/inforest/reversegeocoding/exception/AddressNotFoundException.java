@@ -1,4 +1,4 @@
-package inforest.reversegeocoding.server.exception;
+package inforest.reversegeocoding.exception;
 
 public class AddressNotFoundException extends RuntimeException {
     public AddressNotFoundException(String message) {

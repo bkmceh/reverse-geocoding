@@ -1,4 +1,4 @@
-package inforest.reversegeocoding.server.model.dto;
+package inforest.reversegeocoding.model.dto;
 
 import java.util.List;
 

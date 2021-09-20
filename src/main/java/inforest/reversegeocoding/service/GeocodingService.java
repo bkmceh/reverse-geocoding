@@ -1,32 +1,35 @@
-package inforest.reversegeocoding.server.service;
+package inforest.reversegeocoding.service;
 
-import java.io.IOException;
-
+import com.fasterxml.jackson.databind.ObjectMapper;
+import inforest.reversegeocoding.exception.AddressNotFoundException;
+import inforest.reversegeocoding.model.dto.SuggestionsListResponse;
+import inforest.reversegeocoding.model.entity.AddressMapperEntity;
+import inforest.reversegeocoding.repository.GeocodingRepository;
 import org.apache.http.HttpStatus;
 import org.apache.http.ParseException;
-import org.apache.http.util.EntityUtils;
+import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
-import org.springframework.stereotype.Service;
-import org.apache.http.impl.client.HttpClients;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.impl.client.HttpClients;
+import org.apache.http.util.EntityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import inforest.reversegeocoding.server.repository.IGeocodingRepository;
-import inforest.reversegeocoding.server.model.entity.AddressMapperEntity;
-import inforest.reversegeocoding.server.model.dto.SuggestionsListResponse;
-import inforest.reversegeocoding.server.exception.AddressNotFoundException;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
+
+import java.io.IOException;
 
 
 @Service
 public class GeocodingService {
 
     private final static ObjectMapper MAPPER = new ObjectMapper();
-    private final static String url = "https://suggestions.dadata.ru/suggestions/api/4_1/rs/geolocate/address?";
+
+    @Value("${api.dadata.address}")
+    private String url;
 
     @Autowired
-    private IGeocodingRepository geocodingRepository;
+    private GeocodingRepository geocodingRepository;
 
     public String getAddress(final double lat, final double lon) {
         for (AddressMapperEntity addressMapperEntity : geocodingRepository.findAll()) {
